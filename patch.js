@@ -2,6 +2,7 @@ function patchInMasterData(name, email, fields) {
     var store = 'storeName';
     var urlProtocol = window.location.protocol;
     var apiUrl = urlProtocol + '//api.vtexcrm.com.br/' + store + '/dataentities/' + name + '/documents';
+    var response;
 
     var who = {
         "email": email
@@ -20,8 +21,10 @@ function patchInMasterData(name, email, fields) {
         "type": "PATCH",
         "data": JSON.stringify(data)
     }).success(function(data) {
-        return data;
+        response = data;
     }).fail(function(data) {
-        return data;
+        response = data;
     });
+    
+    return response;
 }
